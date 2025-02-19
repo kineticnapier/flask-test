@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クエリパラメータでリダイレクト</title>
+</head>
+<body>
+    <h1>リダイレクト&クエリ送信テスト</h1>
+
+    <form id="queryForm">
+        <input type="text" id="queryInput" placeholder="送信したいクエリを入力" required>
+        <button type="submit">送信</button>
+    </form>
+
+    <a href="/">ホームに戻る</a>
+
+    <script>
+        document.getElementById("queryForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const query = encodeURIComponent(document.getElementById("queryInput").value);
+            window.location.href = `/query?query=${query}`;
+        });
+    </script>
+</body>
+</html>
